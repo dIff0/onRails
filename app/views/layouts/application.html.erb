@@ -23,6 +23,17 @@
   </head>
 
   <body>
+  <nav style="background-color: #333; color: #fff; padding: 10px margin-bottom: 20px;">
+    <% if user_signed_in? %>
+      <span>Hola, <%= current_user.email %></span>
+      <%= button_to "Cerrar sesión", destroy_user_session_path, method: :delete %>
+    <% else %>
+      <%= link_to "Iniciar sesión", new_user_session_path %>
+      <%= link_to "Registrarse", new_user_registration_path %>
+    <% end %>
+    </nav>
+    <p style="color: red"><%= notice %></p>
+    <p style="color: green"><%= alert %></p>
     <%= yield %>
   </body>
 </html>
